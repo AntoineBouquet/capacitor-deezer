@@ -9,10 +9,13 @@ import Capacitor
 public class DeezerSDKPlugin: CAPPlugin {
     private let implementation = DeezerSDK()
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
+    @objc func initialize(_ call: CAPPluginCall) {
+        let appId = call.getString("appId") ?? ""
+        
+        let resInit: Bool = implementation.initialize(appId: appId);
         call.resolve([
-            "value": implementation.echo(value)
+            "value": resInit
         ])
+        
     }
 }
