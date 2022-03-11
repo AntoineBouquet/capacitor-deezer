@@ -1,3 +1,5 @@
 export interface DeezerSDKPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  initialize(options: {appId: string}): Promise<{ result: boolean }>;
+  login(options: {permissions: string[]}): Promise<{ result: any }>;
+  playTrack(options: {trackId: string}): Promise<void>;
 }

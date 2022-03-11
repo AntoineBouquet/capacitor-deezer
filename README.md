@@ -13,24 +13,54 @@ npx cap sync
 
 <docgen-index>
 
-* [`echo(...)`](#echo)
+* [`initialize(...)`](#initialize)
+* [`login(...)`](#login)
+* [`playTrack(...)`](#playtrack)
 
 </docgen-index>
 
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### echo(...)
+### initialize(...)
 
 ```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
+initialize(options: { appId: string; }) => Promise<{ result: boolean; }>
 ```
 
 | Param         | Type                            |
 | ------------- | ------------------------------- |
-| **`options`** | <code>{ value: string; }</code> |
+| **`options`** | <code>{ appId: string; }</code> |
 
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
+**Returns:** <code>Promise&lt;{ result: boolean; }&gt;</code>
+
+--------------------
+
+
+### login(...)
+
+```typescript
+login(options: { permissions: string[]; }) => Promise<{ result: any; }>
+```
+
+| Param         | Type                                    |
+| ------------- | --------------------------------------- |
+| **`options`** | <code>{ permissions: string[]; }</code> |
+
+**Returns:** <code>Promise&lt;{ result: any; }&gt;</code>
+
+--------------------
+
+
+### playTrack(...)
+
+```typescript
+playTrack(options: { trackId: string; }) => Promise<void>
+```
+
+| Param         | Type                              |
+| ------------- | --------------------------------- |
+| **`options`** | <code>{ trackId: string; }</code> |
 
 --------------------
 

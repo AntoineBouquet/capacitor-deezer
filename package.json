@@ -17,10 +17,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AntoineBouquet/capacitor-deezer.git"
+    "url": "git+https://github.com/AntoineBouquet/capacitor-deezer.git.git"
   },
   "bugs": {
-    "url": "https://github.com/AntoineBouquet/capacitor-deezer/issues"
+    "url": "https://github.com/AntoineBouquet/capacitor-deezer.git/issues"
   },
   "keywords": [
     "capacitor",

@@ -2,9 +2,21 @@ import { WebPlugin } from '@capacitor/core';
 
 import type { DeezerSDKPlugin } from './definitions';
 
+const errorMessage = "Deezer SDK isn't supported on the web";
+
 export class DeezerSDKWeb extends WebPlugin implements DeezerSDKPlugin {
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
+  initialize(options: { appId: string; }): Promise<{ result: boolean; }> {
+    console.error(errorMessage);
+    throw errorMessage;
+  }
+
+  login(): Promise<{ result: boolean; }> {
+    console.error(errorMessage);
+    throw errorMessage;
+  }
+
+   playTrack(options: { trackId: string; }): Promise<void> {
+    console.error(errorMessage);
+    throw errorMessage;
   }
 }
