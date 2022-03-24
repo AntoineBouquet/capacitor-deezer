@@ -56,7 +56,11 @@ public class DeezerSDKPlugin extends Plugin {
             return;
         }
 
-        implementation.login(getActivity(), call, permissions);
+        if(implementation.login(getActivity(), call, permissions)) {
+            JSObject ret = new JSObject();
+            ret.put("result", true);
+            call.resolve(ret);
+        }
     }
 
     @PluginMethod
@@ -94,7 +98,7 @@ public class DeezerSDKPlugin extends Plugin {
     public void play(PluginCall call) {
         call.setKeepAlive(true);
 
-        Long currentTrackId = implementation.play(call);
+        Long currentTrackId = implementation.play(getActivity(), call);
         if(currentTrackId != null) {
             sendPlayEvent(currentTrackId.toString());
         }
