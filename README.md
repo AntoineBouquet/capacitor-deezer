@@ -55,7 +55,6 @@ login(options: { permissions: string[]; }) => Promise<{ result: any; }>
 --------------------
 
 
-<<<<<<< HEAD
 ### logout()
 
 ```typescript
@@ -67,8 +66,6 @@ logout() => Promise<{ result: any; }>
 --------------------
 
 
-=======
->>>>>>> 83b4297253769ed608427dd419c08e22a22da4ec
 ### playTrack(...)
 
 ```typescript
@@ -81,7 +78,6 @@ playTrack(options: { trackId: string; }) => Promise<void>
 
 --------------------
 
-<<<<<<< HEAD
 
 ### play()
 
@@ -104,6 +100,4 @@ pause() => Promise<{ result: boolean; }>
 
 --------------------
 
-=======
->>>>>>> 83b4297253769ed608427dd419c08e22a22da4ec
 </docgen-api>
