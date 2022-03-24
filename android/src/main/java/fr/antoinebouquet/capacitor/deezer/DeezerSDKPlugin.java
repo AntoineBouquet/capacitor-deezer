@@ -1,11 +1,14 @@
 package fr.antoinebouquet.capacitor.deezer;
 
+import android.content.Context;
+
 import com.getcapacitor.JSArray;
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.annotation.CapacitorPlugin;
+import com.google.gson.Gson;
 
 import org.json.JSONException;
 
@@ -57,8 +60,21 @@ public class DeezerSDKPlugin extends Plugin {
     }
 
     @PluginMethod
+    public void logout(PluginCall call) {
+        implementation.logout(getActivity());
+
+        JSObject ret = new JSObject();
+        ret.put("result", true);
+        call.resolve(ret);
+    }
+
+    @PluginMethod
     public void playTrack(PluginCall call) {
         call.setKeepAlive(true);
+
+        Context con = this.getContext();
+        PowerManage po = new PowerManage();
+        po.activateLowBAttery(con);
 
         String trackIdStr = call.getString("trackId");
 
@@ -68,9 +84,39 @@ public class DeezerSDKPlugin extends Plugin {
         }
 
         try {
-            implementation.playTrack(getActivity(), call, Long.parseLong(trackIdStr));
+            implementation.playTrack(getActivity(), call, bridge, Long.parseLong(trackIdStr));
         } catch(NumberFormatException exception) {
             call.reject("Track id must be a number value in a string");
         }
+    }
+
+    @PluginMethod
+    public void play(PluginCall call) {
+        call.setKeepAlive(true);
+
+        Long currentTrackId = implementation.play(call);
+        if(currentTrackId != null) {
+            sendPlayEvent(currentTrackId.toString());
+        }
+
+
+        JSObject ret = new JSObject();
+        ret.put("result", true);
+        call.resolve(ret);
+    }
+
+    @PluginMethod
+    public void pause(PluginCall call) {
+        implementation.pause();
+
+        JSObject ret = new JSObject();
+        ret.put("result", true);
+        call.resolve(ret);
+    }
+
+    private void sendPlayEvent(String uri) {
+        Gson gson = new Gson();
+        PlayUri playUri = new PlayUri(uri);
+        bridge.triggerWindowJSEvent("playRecord", gson.toJson(playUri));
     }
 }

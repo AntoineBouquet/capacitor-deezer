@@ -15,7 +15,10 @@ npx cap sync
 
 * [`initialize(...)`](#initialize)
 * [`login(...)`](#login)
+* [`logout()`](#logout)
 * [`playTrack(...)`](#playtrack)
+* [`play()`](#play)
+* [`pause()`](#pause)
 
 </docgen-index>
 
@@ -52,6 +55,20 @@ login(options: { permissions: string[]; }) => Promise<{ result: any; }>
 --------------------
 
 
+<<<<<<< HEAD
+### logout()
+
+```typescript
+logout() => Promise<{ result: any; }>
+```
+
+**Returns:** <code>Promise&lt;{ result: any; }&gt;</code>
+
+--------------------
+
+
+=======
+>>>>>>> 83b4297253769ed608427dd419c08e22a22da4ec
 ### playTrack(...)
 
 ```typescript
@@ -64,4 +81,29 @@ playTrack(options: { trackId: string; }) => Promise<void>
 
 --------------------
 
+<<<<<<< HEAD
+
+### play()
+
+```typescript
+play() => Promise<{ result: boolean; }>
+```
+
+**Returns:** <code>Promise&lt;{ result: boolean; }&gt;</code>
+
+--------------------
+
+
+### pause()
+
+```typescript
+pause() => Promise<{ result: boolean; }>
+```
+
+**Returns:** <code>Promise&lt;{ result: boolean; }&gt;</code>
+
+--------------------
+
+=======
+>>>>>>> 83b4297253769ed608427dd419c08e22a22da4ec
 </docgen-api>
